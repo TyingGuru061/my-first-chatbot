@@ -1,2 +1,2 @@
-with open('requirements.txt', 'w') as f:
-    f.write('streamlit\ngroq')
+streamlit
+groq
