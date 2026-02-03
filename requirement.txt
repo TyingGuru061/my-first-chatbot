@@ -1,2 +1,2 @@
-streamlit
-groq
+with open('requirements.txt', 'w') as f:
+    f.write('streamlit\ngroq')
