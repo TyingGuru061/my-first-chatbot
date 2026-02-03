@@ -71,9 +71,19 @@ if prompt := st.chat_input("What is on your mind?"):
     # Save assistant response to history
     st.session_state.messages.append({"role": "assistant", "content": full_response})
 
-# 6. Sidebar Utilities
+# Add this to Section 6: Sidebar Utilities
 with st.sidebar:
     st.divider()
-    if st.button("Clear Conversation"):
-        st.session_state.messages = [st.session_state.messages[0]] # Reset but keep system prompt
-        st.rerun()
+    # Create a string of the chat history
+    chat_text = ""
+    for msg in st.session_state.messages:
+        if msg["role"] != "system":
+            chat_text += f"{msg['role'].capitalize()}: {msg['content']}\n\n"
+    
+    # Download button
+    st.download_button(
+        label="📥 Download Lesson Summary",
+        data=chat_text,
+        file_name="english_lesson.txt",
+        mime="text/plain"
+    )
